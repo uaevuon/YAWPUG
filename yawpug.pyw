@@ -1,19 +1,21 @@
 import sys
 import subprocess
 from subprocess import CREATE_NO_WINDOW
-from PySide6.QtWidgets import QApplication, QFileDialog, QWidget
+from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
 from PySide6.QtCore import QFile
-from ui_mainwidget import Ui_Form
+from ui_mainwindow import Ui_MainWindow
 
 
-class MainWindow(QWidget):
+class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
-        self.args=[]
-        self.args.append('.\\bin\\gif2webp')
+        self.bin_path='.\\bin\\gif2webp'
+        self.args=[self.bin_path]
+
+        self.options=[]
         
         self.setWindowTitle("YAWPUG - Yet Another WebP Utilities Gui")
     
@@ -34,6 +36,7 @@ class MainWindow(QWidget):
     def convert_clicked(self):
         gif_file = self.ui.input_path.text()
         webp_file = self.ui.output_path.text()
+        self.args.extend(self.options)
         self.args.extend((gif_file, '-o', webp_file))
         p=subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
         print(p.stdout.decode('utf-8'))
