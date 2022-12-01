@@ -1,2 +1,5 @@
 # YAWPUG
-Yet Another WebP Utilities Gui
+**Y**et **A**nother **W**eb**P** **U**tilities **G**ui
+
+## TODO
+batch mode
