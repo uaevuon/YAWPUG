@@ -2,6 +2,7 @@ import sys
 import subprocess
 from subprocess import CREATE_NO_WINDOW
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
+from PySide6.QtCore import QFileInfo
 from ui_mainwindow import Ui_MainWindow
 
 
@@ -56,19 +57,19 @@ class MainWindow(QMainWindow):
     def set_min_size(self):
         self.options[3] = '-min_size' if self.ui.min_size_checkbox.isChecked() else ''
         self.updateStatusBar()
-        
-        
+                
     def convert_clicked(self):
         self.ui.statusbar.showMessage('Converting...')
+        self.ui.statusbar.repaint()
+        
         self.args=[self.BIN_PATH]
+        self.args.extend(self.options)
         gif_file = self.ui.input_path.text()
         webp_file = self.ui.output_path.text()
-        self.args.extend(self.options)
         self.args.extend((gif_file, '-o', webp_file))
+        
         subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
-        self.ui.statusbar.showMessage('Done.')
-        # TODO: show file size comparison
-
+        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.2f}%')
         
     def updateStatusBar(self): 
         self.ui.statusbar.showMessage('options: ' + ' '.join(self.options))
