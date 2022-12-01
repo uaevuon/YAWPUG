@@ -25,172 +25,198 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(312, 388)
+        MainWindow.resize(303, 388)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setEnabled(True)
         self.formLayout = QFormLayout(self.centralwidget)
         self.formLayout.setObjectName(u"formLayout")
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
 
-        self.horizontalLayout.addWidget(self.label_2)
+        self.horizontalLayout_7.addWidget(self.label_2)
 
         self.input_path = QLineEdit(self.centralwidget)
         self.input_path.setObjectName(u"input_path")
 
-        self.horizontalLayout.addWidget(self.input_path)
+        self.horizontalLayout_7.addWidget(self.input_path)
 
         self.input_select = QPushButton(self.centralwidget)
         self.input_select.setObjectName(u"input_select")
 
-        self.horizontalLayout.addWidget(self.input_select)
+        self.horizontalLayout_7.addWidget(self.input_select)
 
 
-        self.formLayout.setLayout(0, QFormLayout.LabelRole, self.horizontalLayout)
+        self.formLayout.setLayout(0, QFormLayout.LabelRole, self.horizontalLayout_7)
 
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.label_3 = QLabel(self.centralwidget)
         self.label_3.setObjectName(u"label_3")
 
-        self.horizontalLayout_2.addWidget(self.label_3)
+        self.horizontalLayout_6.addWidget(self.label_3)
 
         self.output_path = QLineEdit(self.centralwidget)
         self.output_path.setObjectName(u"output_path")
 
-        self.horizontalLayout_2.addWidget(self.output_path)
+        self.horizontalLayout_6.addWidget(self.output_path)
 
         self.output_select = QPushButton(self.centralwidget)
         self.output_select.setObjectName(u"output_select")
 
-        self.horizontalLayout_2.addWidget(self.output_select)
+        self.horizontalLayout_6.addWidget(self.output_select)
 
 
-        self.formLayout.setLayout(1, QFormLayout.LabelRole, self.horizontalLayout_2)
+        self.formLayout.setLayout(1, QFormLayout.LabelRole, self.horizontalLayout_6)
 
-        self.horizontalLayout_3 = QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.radioButton = QRadioButton(self.centralwidget)
-        self.radioButton.setObjectName(u"radioButton")
-        self.radioButton.setChecked(True)
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.lossless_button = QRadioButton(self.centralwidget)
+        self.lossless_button.setObjectName(u"lossless_button")
+        self.lossless_button.setChecked(True)
 
-        self.horizontalLayout_3.addWidget(self.radioButton)
+        self.horizontalLayout_5.addWidget(self.lossless_button)
 
-        self.radioButton_3 = QRadioButton(self.centralwidget)
-        self.radioButton_3.setObjectName(u"radioButton_3")
+        self.lossy_button = QRadioButton(self.centralwidget)
+        self.lossy_button.setObjectName(u"lossy_button")
 
-        self.horizontalLayout_3.addWidget(self.radioButton_3)
+        self.horizontalLayout_5.addWidget(self.lossy_button)
 
-        self.radioButton_2 = QRadioButton(self.centralwidget)
-        self.radioButton_2.setObjectName(u"radioButton_2")
+        self.mixed_button = QRadioButton(self.centralwidget)
+        self.mixed_button.setObjectName(u"mixed_button")
 
-        self.horizontalLayout_3.addWidget(self.radioButton_2)
+        self.horizontalLayout_5.addWidget(self.mixed_button)
 
 
-        self.formLayout.setLayout(2, QFormLayout.LabelRole, self.horizontalLayout_3)
+        self.formLayout.setLayout(2, QFormLayout.LabelRole, self.horizontalLayout_5)
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.checkBox_4 = QCheckBox(self.centralwidget)
-        self.checkBox_4.setObjectName(u"checkBox_4")
+        self.quality_checkbox = QCheckBox(self.centralwidget)
+        self.quality_checkbox.setObjectName(u"quality_checkbox")
 
-        self.horizontalLayout_4.addWidget(self.checkBox_4)
+        self.horizontalLayout_4.addWidget(self.quality_checkbox)
 
-        self.horizontalSlider = QSlider(self.centralwidget)
-        self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setMaximum(100)
-        self.horizontalSlider.setValue(75)
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
+        self.quality_slider = QSlider(self.centralwidget)
+        self.quality_slider.setObjectName(u"quality_slider")
+        self.quality_slider.setEnabled(False)
+        self.quality_slider.setMaximum(100)
+        self.quality_slider.setValue(75)
+        self.quality_slider.setOrientation(Qt.Horizontal)
 
-        self.horizontalLayout_4.addWidget(self.horizontalSlider)
+        self.horizontalLayout_4.addWidget(self.quality_slider)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_4.addWidget(self.label)
 
 
         self.formLayout.setLayout(3, QFormLayout.LabelRole, self.horizontalLayout_4)
 
-        self.checkBox_2 = QCheckBox(self.centralwidget)
-        self.checkBox_2.setObjectName(u"checkBox_2")
-        self.checkBox_2.setChecked(True)
+        self.min_size_checkbox = QCheckBox(self.centralwidget)
+        self.min_size_checkbox.setObjectName(u"min_size_checkbox")
+        self.min_size_checkbox.setChecked(False)
 
-        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.checkBox_2)
+        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.min_size_checkbox)
 
-        self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.checkBox_5 = QCheckBox(self.centralwidget)
-        self.checkBox_5.setObjectName(u"checkBox_5")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.compression_checkbox = QCheckBox(self.centralwidget)
+        self.compression_checkbox.setObjectName(u"compression_checkbox")
 
-        self.horizontalLayout_5.addWidget(self.checkBox_5)
+        self.horizontalLayout_3.addWidget(self.compression_checkbox)
 
-        self.horizontalSlider_2 = QSlider(self.centralwidget)
-        self.horizontalSlider_2.setObjectName(u"horizontalSlider_2")
-        self.horizontalSlider_2.setMaximum(6)
-        self.horizontalSlider_2.setValue(4)
-        self.horizontalSlider_2.setOrientation(Qt.Horizontal)
-        self.horizontalSlider_2.setInvertedControls(False)
+        self.compression_slider = QSlider(self.centralwidget)
+        self.compression_slider.setObjectName(u"compression_slider")
+        self.compression_slider.setEnabled(False)
+        self.compression_slider.setMaximum(6)
+        self.compression_slider.setValue(4)
+        self.compression_slider.setOrientation(Qt.Horizontal)
+        self.compression_slider.setInvertedControls(False)
 
-        self.horizontalLayout_5.addWidget(self.horizontalSlider_2)
+        self.horizontalLayout_3.addWidget(self.compression_slider)
+
+        self.label_4 = QLabel(self.centralwidget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout_3.addWidget(self.label_4)
 
 
-        self.formLayout.setLayout(5, QFormLayout.LabelRole, self.horizontalLayout_5)
+        self.formLayout.setLayout(5, QFormLayout.LabelRole, self.horizontalLayout_3)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.metadata_checkbox = QCheckBox(self.centralwidget)
+        self.metadata_checkbox.setObjectName(u"metadata_checkbox")
+
+        self.horizontalLayout_2.addWidget(self.metadata_checkbox)
+
+        self.metadata_combobox = QComboBox(self.centralwidget)
+        self.metadata_combobox.addItem("")
+        self.metadata_combobox.addItem("")
+        self.metadata_combobox.addItem("")
+        self.metadata_combobox.addItem("")
+        self.metadata_combobox.setObjectName(u"metadata_combobox")
+        self.metadata_combobox.setEnabled(False)
+
+        self.horizontalLayout_2.addWidget(self.metadata_combobox)
+
+
+        self.formLayout.setLayout(6, QFormLayout.LabelRole, self.horizontalLayout_2)
+
+        self.multi_threading = QCheckBox(self.centralwidget)
+        self.multi_threading.setObjectName(u"multi_threading")
+        self.multi_threading.setChecked(False)
+
+        self.formLayout.setWidget(7, QFormLayout.LabelRole, self.multi_threading)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.filter_checkbox = QCheckBox(self.centralwidget)
+        self.filter_checkbox.setObjectName(u"filter_checkbox")
+        self.filter_checkbox.setEnabled(True)
+
+        self.horizontalLayout.addWidget(self.filter_checkbox)
+
+        self.filter_slider = QSlider(self.centralwidget)
+        self.filter_slider.setObjectName(u"filter_slider")
+        self.filter_slider.setEnabled(False)
+        self.filter_slider.setMaximum(100)
+        self.filter_slider.setOrientation(Qt.Horizontal)
+
+        self.horizontalLayout.addWidget(self.filter_slider)
+
+        self.label_6 = QLabel(self.centralwidget)
+        self.label_6.setObjectName(u"label_6")
+
+        self.horizontalLayout.addWidget(self.label_6)
+
+
+        self.formLayout.setLayout(9, QFormLayout.LabelRole, self.horizontalLayout)
 
         self.label_5 = QLabel(self.centralwidget)
         self.label_5.setObjectName(u"label_5")
 
-        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.label_5)
-
-        self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.checkBox_3 = QCheckBox(self.centralwidget)
-        self.checkBox_3.setObjectName(u"checkBox_3")
-
-        self.horizontalLayout_6.addWidget(self.checkBox_3)
-
-        self.comboBox = QComboBox(self.centralwidget)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-
-        self.horizontalLayout_6.addWidget(self.comboBox)
-
-
-        self.formLayout.setLayout(7, QFormLayout.LabelRole, self.horizontalLayout_6)
-
-        self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.checkBox_6 = QCheckBox(self.centralwidget)
-        self.checkBox_6.setObjectName(u"checkBox_6")
-
-        self.horizontalLayout_7.addWidget(self.checkBox_6)
-
-        self.horizontalSlider_3 = QSlider(self.centralwidget)
-        self.horizontalSlider_3.setObjectName(u"horizontalSlider_3")
-        self.horizontalSlider_3.setOrientation(Qt.Horizontal)
-
-        self.horizontalLayout_7.addWidget(self.horizontalSlider_3)
-
-
-        self.formLayout.setLayout(8, QFormLayout.LabelRole, self.horizontalLayout_7)
-
-        self.checkBox = QCheckBox(self.centralwidget)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setChecked(True)
-
-        self.formLayout.setWidget(9, QFormLayout.LabelRole, self.checkBox)
+        self.formLayout.setWidget(10, QFormLayout.LabelRole, self.label_5)
 
         self.convert_button = QCommandLinkButton(self.centralwidget)
         self.convert_button.setObjectName(u"convert_button")
 
-        self.formLayout.setWidget(10, QFormLayout.LabelRole, self.convert_button)
+        self.formLayout.setWidget(11, QFormLayout.LabelRole, self.convert_button)
+
+        self.label_7 = QLabel(self.centralwidget)
+        self.label_7.setObjectName(u"label_7")
+
+        self.formLayout.setWidget(8, QFormLayout.LabelRole, self.label_7)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setEnabled(True)
-        self.menubar.setGeometry(QRect(0, 0, 312, 22))
+        self.menubar.setGeometry(QRect(0, 0, 303, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -198,6 +224,16 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.quality_slider.valueChanged.connect(self.label.setNum)
+        self.compression_slider.valueChanged.connect(self.label_4.setNum)
+        self.quality_checkbox.clicked["bool"].connect(self.quality_slider.setEnabled)
+        self.filter_slider.valueChanged.connect(self.label_6.setNum)
+        self.filter_checkbox.clicked["bool"].connect(self.filter_slider.setEnabled)
+        self.compression_checkbox.clicked["bool"].connect(self.compression_slider.setEnabled)
+        self.metadata_checkbox.clicked["bool"].connect(self.metadata_combobox.setEnabled)
+
+        self.metadata_combobox.setCurrentIndex(0)
+
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
@@ -208,22 +244,35 @@ class Ui_MainWindow(object):
         self.input_select.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"output_file", None))
         self.output_select.setText(QCoreApplication.translate("MainWindow", u"Select", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"loseless", None))
-        self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"lossy", None))
-        self.radioButton_2.setText(QCoreApplication.translate("MainWindow", u"mixed", None))
-        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"quality", None))
-        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"min_size", None))
-        self.checkBox_5.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
-        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"metadata", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"all", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"none", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"icc", None))
-        self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"xmp", None))
+#if QT_CONFIG(tooltip)
+        self.lossless_button.setToolTip(QCoreApplication.translate("MainWindow", u"Encode the image using lossless compression.", None))
+#endif // QT_CONFIG(tooltip)
+        self.lossless_button.setText(QCoreApplication.translate("MainWindow", u"loseless", None))
+#if QT_CONFIG(tooltip)
+        self.lossy_button.setToolTip(QCoreApplication.translate("MainWindow", u"Encode the image using lossy compression.", None))
+#endif // QT_CONFIG(tooltip)
+        self.lossy_button.setText(QCoreApplication.translate("MainWindow", u"lossy", None))
+#if QT_CONFIG(tooltip)
+        self.mixed_button.setToolTip(QCoreApplication.translate("MainWindow", u"Mixed compression mode: optimize compression of the image by picking either lossy or lossless compression for each frame heuristically.", None))
+#endif // QT_CONFIG(tooltip)
+        self.mixed_button.setText(QCoreApplication.translate("MainWindow", u"mixed", None))
+        self.quality_checkbox.setText(QCoreApplication.translate("MainWindow", u"quality", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"75", None))
+        self.min_size_checkbox.setText(QCoreApplication.translate("MainWindow", u"minimize size", None))
+        self.compression_checkbox.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"4", None))
+        self.metadata_checkbox.setText(QCoreApplication.translate("MainWindow", u"metadata", None))
+        self.metadata_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"all", None))
+        self.metadata_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"none", None))
+        self.metadata_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"icc", None))
+        self.metadata_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"xmp", None))
 
-        self.comboBox.setCurrentText(QCoreApplication.translate("MainWindow", u"all", None))
-        self.checkBox_6.setText(QCoreApplication.translate("MainWindow", u"filter", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
+        self.metadata_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"all", None))
+        self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
+        self.filter_checkbox.setText(QCoreApplication.translate("MainWindow", u"filter", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
         self.convert_button.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
     # retranslateUi
 
