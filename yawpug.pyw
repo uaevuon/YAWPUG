@@ -41,6 +41,7 @@ class MainWindow(QMainWindow):
         fname = QFileDialog.getSaveFileName(self,'','','WebP Image(*.webp)')
         self.ui.output_path.setText(fname[0])
         
+        
     def set_compression(self):
         if self.ui.lossless_button.isChecked():
             self.options[0]=''
@@ -58,7 +59,9 @@ class MainWindow(QMainWindow):
         self.options[3] = '-min_size' if self.ui.min_size_checkbox.isChecked() else ''
         self.updateStatusBar()
                 
+        
     def convert_clicked(self):
+        # TODO: prevent click convert before setting input path and output path
         self.ui.statusbar.showMessage('Converting...')
         self.ui.statusbar.repaint()
         

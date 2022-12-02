@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(303, 388)
+        MainWindow.resize(309, 422)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setEnabled(True)
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.min_size_checkbox.setObjectName(u"min_size_checkbox")
         self.min_size_checkbox.setChecked(False)
 
-        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.min_size_checkbox)
+        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.min_size_checkbox)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -145,7 +145,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.label_4)
 
 
-        self.formLayout.setLayout(5, QFormLayout.LabelRole, self.horizontalLayout_3)
+        self.formLayout.setLayout(4, QFormLayout.LabelRole, self.horizontalLayout_3)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -167,11 +167,10 @@ class Ui_MainWindow(object):
 
         self.formLayout.setLayout(6, QFormLayout.LabelRole, self.horizontalLayout_2)
 
-        self.multi_threading = QCheckBox(self.centralwidget)
-        self.multi_threading.setObjectName(u"multi_threading")
-        self.multi_threading.setChecked(False)
+        self.label_7 = QLabel(self.centralwidget)
+        self.label_7.setObjectName(u"label_7")
 
-        self.formLayout.setWidget(7, QFormLayout.LabelRole, self.multi_threading)
+        self.formLayout.setWidget(8, QFormLayout.LabelRole, self.label_7)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -195,28 +194,29 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label_6)
 
 
-        self.formLayout.setLayout(9, QFormLayout.LabelRole, self.horizontalLayout)
-
-        self.label_5 = QLabel(self.centralwidget)
-        self.label_5.setObjectName(u"label_5")
-
-        self.formLayout.setWidget(10, QFormLayout.LabelRole, self.label_5)
+        self.formLayout.setLayout(10, QFormLayout.LabelRole, self.horizontalLayout)
 
         self.convert_button = QCommandLinkButton(self.centralwidget)
         self.convert_button.setObjectName(u"convert_button")
 
-        self.formLayout.setWidget(11, QFormLayout.LabelRole, self.convert_button)
+        self.formLayout.setWidget(12, QFormLayout.LabelRole, self.convert_button)
 
-        self.label_7 = QLabel(self.centralwidget)
-        self.label_7.setObjectName(u"label_7")
+        self.label_5 = QLabel(self.centralwidget)
+        self.label_5.setObjectName(u"label_5")
 
-        self.formLayout.setWidget(8, QFormLayout.LabelRole, self.label_7)
+        self.formLayout.setWidget(9, QFormLayout.LabelRole, self.label_5)
+
+        self.multi_threading = QCheckBox(self.centralwidget)
+        self.multi_threading.setObjectName(u"multi_threading")
+        self.multi_threading.setChecked(False)
+
+        self.formLayout.setWidget(7, QFormLayout.LabelRole, self.multi_threading)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setEnabled(True)
-        self.menubar.setGeometry(QRect(0, 0, 303, 22))
+        self.menubar.setGeometry(QRect(0, 0, 309, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -245,22 +245,34 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"output_file", None))
         self.output_select.setText(QCoreApplication.translate("MainWindow", u"Select", None))
 #if QT_CONFIG(tooltip)
-        self.lossless_button.setToolTip(QCoreApplication.translate("MainWindow", u"Encode the image using lossless compression.", None))
+        self.lossless_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossless compression.", None))
 #endif // QT_CONFIG(tooltip)
         self.lossless_button.setText(QCoreApplication.translate("MainWindow", u"loseless", None))
 #if QT_CONFIG(tooltip)
-        self.lossy_button.setToolTip(QCoreApplication.translate("MainWindow", u"Encode the image using lossy compression.", None))
+        self.lossy_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossy compression.", None))
 #endif // QT_CONFIG(tooltip)
         self.lossy_button.setText(QCoreApplication.translate("MainWindow", u"lossy", None))
 #if QT_CONFIG(tooltip)
-        self.mixed_button.setToolTip(QCoreApplication.translate("MainWindow", u"Mixed compression mode: optimize compression of the image by picking either lossy or lossless compression for each frame heuristically.", None))
+        self.mixed_button.setToolTip(QCoreApplication.translate("MainWindow", u"for each frame in the image, pick lossy or lossless compression heuristically.", None))
 #endif // QT_CONFIG(tooltip)
         self.mixed_button.setText(QCoreApplication.translate("MainWindow", u"mixed", None))
+#if QT_CONFIG(tooltip)
+        self.quality_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"quality factor (0:small..100:big)", None))
+#endif // QT_CONFIG(tooltip)
         self.quality_checkbox.setText(QCoreApplication.translate("MainWindow", u"quality", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"75", None))
+#if QT_CONFIG(tooltip)
+        self.min_size_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"minimize output size (default:off)", None))
+#endif // QT_CONFIG(tooltip)
         self.min_size_checkbox.setText(QCoreApplication.translate("MainWindow", u"minimize size", None))
+#if QT_CONFIG(tooltip)
+        self.compression_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"compression method (0=fast, 6=slowest)", None))
+#endif // QT_CONFIG(tooltip)
         self.compression_checkbox.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"4", None))
+#if QT_CONFIG(tooltip)
+        self.metadata_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"comma separated list of metadata to copy from the input to the output if present (default:xmp)", None))
+#endif // QT_CONFIG(tooltip)
         self.metadata_checkbox.setText(QCoreApplication.translate("MainWindow", u"metadata", None))
         self.metadata_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"all", None))
         self.metadata_combobox.setItemText(1, QCoreApplication.translate("MainWindow", u"none", None))
@@ -268,11 +280,17 @@ class Ui_MainWindow(object):
         self.metadata_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"xmp", None))
 
         self.metadata_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"all", None))
-        self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
         self.filter_checkbox.setText(QCoreApplication.translate("MainWindow", u"filter", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
         self.convert_button.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
+#if QT_CONFIG(tooltip)
+        self.label_5.setToolTip(QCoreApplication.translate("MainWindow", u"min distance between key frames", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
+#if QT_CONFIG(tooltip)
+        self.multi_threading.setToolTip(QCoreApplication.translate("MainWindow", u"use multi-threading if available", None))
+#endif // QT_CONFIG(tooltip)
+        self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
     # retranslateUi
 
