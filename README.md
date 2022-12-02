@@ -1,7 +1,9 @@
 # YAWPUG
 **Y**et **A**nother **W**eb**P** **U**tilities **G**ui
 
-## TODO
-batch mode
+## Installation
+    pip install -r requirements.txt
 
-save config
+## TODO
+* batch mode
+* save config
