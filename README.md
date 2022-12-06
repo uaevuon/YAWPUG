@@ -1,5 +1,5 @@
 # YAWPUG
-YAWPUG (short for **Y**et **A**nother **W**eb**P** **U**tilities **G**ui) is a Gui program for WebP Utilities using [Qt for Python 6(PySide6)](https://www.qt.io/qt-for-python).
+**Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python 6(PySide6)](https://www.qt.io/qt-for-python).
 
 ## Setup
 1. Install Python 3.7+ (64-bit), making sure to add it to your PATH.
