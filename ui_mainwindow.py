@@ -16,21 +16,22 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QCommandLinkButton,
-    QFormLayout, QHBoxLayout, QLabel, QLineEdit,
-    QMainWindow, QMenuBar, QPushButton, QRadioButton,
-    QSizePolicy, QSlider, QStatusBar, QWidget)
+    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
+    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
+    QSlider, QSpacerItem, QStatusBar, QVBoxLayout,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(309, 422)
+        MainWindow.resize(405, 422)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setEnabled(True)
-        self.formLayout = QFormLayout(self.centralwidget)
-        self.formLayout.setObjectName(u"formLayout")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.label_2 = QLabel(self.centralwidget)
@@ -49,7 +50,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.input_select)
 
 
-        self.formLayout.setLayout(0, QFormLayout.LabelRole, self.horizontalLayout_7)
+        self.verticalLayout.addLayout(self.horizontalLayout_7)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -69,7 +70,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.output_select)
 
 
-        self.formLayout.setLayout(1, QFormLayout.LabelRole, self.horizontalLayout_6)
+        self.verticalLayout.addLayout(self.horizontalLayout_6)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -89,8 +90,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.mixed_button)
 
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout.setLayout(2, QFormLayout.LabelRole, self.horizontalLayout_5)
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_5)
 
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -102,6 +107,11 @@ class Ui_MainWindow(object):
         self.quality_slider = QSlider(self.centralwidget)
         self.quality_slider.setObjectName(u"quality_slider")
         self.quality_slider.setEnabled(False)
+        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.quality_slider.sizePolicy().hasHeightForWidth())
+        self.quality_slider.setSizePolicy(sizePolicy)
         self.quality_slider.setMaximum(100)
         self.quality_slider.setValue(75)
         self.quality_slider.setOrientation(Qt.Horizontal)
@@ -113,14 +123,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.label)
 
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout.setLayout(3, QFormLayout.LabelRole, self.horizontalLayout_4)
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
 
-        self.min_size_checkbox = QCheckBox(self.centralwidget)
-        self.min_size_checkbox.setObjectName(u"min_size_checkbox")
-        self.min_size_checkbox.setChecked(False)
 
-        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.min_size_checkbox)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -132,6 +140,8 @@ class Ui_MainWindow(object):
         self.compression_slider = QSlider(self.centralwidget)
         self.compression_slider.setObjectName(u"compression_slider")
         self.compression_slider.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.compression_slider.sizePolicy().hasHeightForWidth())
+        self.compression_slider.setSizePolicy(sizePolicy)
         self.compression_slider.setMaximum(6)
         self.compression_slider.setValue(4)
         self.compression_slider.setOrientation(Qt.Horizontal)
@@ -144,8 +154,18 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.label_4)
 
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout.setLayout(4, QFormLayout.LabelRole, self.horizontalLayout_3)
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
+
+        self.min_size_checkbox = QCheckBox(self.centralwidget)
+        self.min_size_checkbox.setObjectName(u"min_size_checkbox")
+        self.min_size_checkbox.setChecked(False)
+
+        self.verticalLayout.addWidget(self.min_size_checkbox)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -161,16 +181,33 @@ class Ui_MainWindow(object):
         self.metadata_combobox.addItem("")
         self.metadata_combobox.setObjectName(u"metadata_combobox")
         self.metadata_combobox.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.metadata_combobox.sizePolicy().hasHeightForWidth())
+        self.metadata_combobox.setSizePolicy(sizePolicy)
 
         self.horizontalLayout_2.addWidget(self.metadata_combobox)
 
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout.setLayout(6, QFormLayout.LabelRole, self.horizontalLayout_2)
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_4)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+
+        self.multi_threading = QCheckBox(self.centralwidget)
+        self.multi_threading.setObjectName(u"multi_threading")
+        self.multi_threading.setChecked(False)
+
+        self.verticalLayout.addWidget(self.multi_threading)
 
         self.label_7 = QLabel(self.centralwidget)
         self.label_7.setObjectName(u"label_7")
 
-        self.formLayout.setWidget(8, QFormLayout.LabelRole, self.label_7)
+        self.verticalLayout.addWidget(self.label_7)
+
+        self.label_5 = QLabel(self.centralwidget)
+        self.label_5.setObjectName(u"label_5")
+
+        self.verticalLayout.addWidget(self.label_5)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -183,6 +220,8 @@ class Ui_MainWindow(object):
         self.filter_slider = QSlider(self.centralwidget)
         self.filter_slider.setObjectName(u"filter_slider")
         self.filter_slider.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.filter_slider.sizePolicy().hasHeightForWidth())
+        self.filter_slider.setSizePolicy(sizePolicy)
         self.filter_slider.setMaximum(100)
         self.filter_slider.setOrientation(Qt.Horizontal)
 
@@ -193,30 +232,23 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.label_6)
 
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.formLayout.setLayout(10, QFormLayout.LabelRole, self.horizontalLayout)
+        self.horizontalLayout.addItem(self.horizontalSpacer_5)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.convert_button = QCommandLinkButton(self.centralwidget)
         self.convert_button.setObjectName(u"convert_button")
 
-        self.formLayout.setWidget(12, QFormLayout.LabelRole, self.convert_button)
-
-        self.label_5 = QLabel(self.centralwidget)
-        self.label_5.setObjectName(u"label_5")
-
-        self.formLayout.setWidget(9, QFormLayout.LabelRole, self.label_5)
-
-        self.multi_threading = QCheckBox(self.centralwidget)
-        self.multi_threading.setObjectName(u"multi_threading")
-        self.multi_threading.setChecked(False)
-
-        self.formLayout.setWidget(7, QFormLayout.LabelRole, self.multi_threading)
+        self.verticalLayout.addWidget(self.convert_button)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setEnabled(True)
-        self.menubar.setGeometry(QRect(0, 0, 309, 22))
+        self.menubar.setGeometry(QRect(0, 0, 405, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -262,14 +294,14 @@ class Ui_MainWindow(object):
         self.quality_checkbox.setText(QCoreApplication.translate("MainWindow", u"quality", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"75", None))
 #if QT_CONFIG(tooltip)
-        self.min_size_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"minimize output size (default:off)", None))
-#endif // QT_CONFIG(tooltip)
-        self.min_size_checkbox.setText(QCoreApplication.translate("MainWindow", u"minimize size", None))
-#if QT_CONFIG(tooltip)
         self.compression_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"compression method (0=fast, 6=slowest)", None))
 #endif // QT_CONFIG(tooltip)
         self.compression_checkbox.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"4", None))
+#if QT_CONFIG(tooltip)
+        self.min_size_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"minimize output size (default:off)", None))
+#endif // QT_CONFIG(tooltip)
+        self.min_size_checkbox.setText(QCoreApplication.translate("MainWindow", u"minimize size", None))
 #if QT_CONFIG(tooltip)
         self.metadata_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"comma separated list of metadata to copy from the input to the output if present (default:xmp)", None))
 #endif // QT_CONFIG(tooltip)
@@ -280,17 +312,17 @@ class Ui_MainWindow(object):
         self.metadata_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"xmp", None))
 
         self.metadata_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"all", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
-        self.filter_checkbox.setText(QCoreApplication.translate("MainWindow", u"filter", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"0", None))
-        self.convert_button.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
-#if QT_CONFIG(tooltip)
-        self.label_5.setToolTip(QCoreApplication.translate("MainWindow", u"min distance between key frames", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
 #if QT_CONFIG(tooltip)
         self.multi_threading.setToolTip(QCoreApplication.translate("MainWindow", u"use multi-threading if available", None))
 #endif // QT_CONFIG(tooltip)
         self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
+#if QT_CONFIG(tooltip)
+        self.label_5.setToolTip(QCoreApplication.translate("MainWindow", u"min distance between key frames", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
+        self.filter_checkbox.setText(QCoreApplication.translate("MainWindow", u"filter", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.convert_button.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
     # retranslateUi
 
