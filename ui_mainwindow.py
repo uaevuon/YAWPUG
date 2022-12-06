@@ -41,6 +41,7 @@ class Ui_MainWindow(object):
 
         self.input_path = QLineEdit(self.centralwidget)
         self.input_path.setObjectName(u"input_path")
+        self.input_path.setReadOnly(True)
 
         self.horizontalLayout_7.addWidget(self.input_path)
 
@@ -61,6 +62,7 @@ class Ui_MainWindow(object):
 
         self.output_path = QLineEdit(self.centralwidget)
         self.output_path.setObjectName(u"output_path")
+        self.output_path.setReadOnly(True)
 
         self.horizontalLayout_6.addWidget(self.output_path)
 
