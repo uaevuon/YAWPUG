@@ -11,5 +11,5 @@
 * save config
 
 ## License
-This software is licensed under the Apache License 2.0.
+This software is licensed under the GNU General Public License v3.0.
 The source is publicly available on [GitHub](https://github.com/uaevuon/yawpug).
