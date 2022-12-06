@@ -1,5 +1,5 @@
 # YAWPUG
-**Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python 6(PySide6)](https://www.qt.io/qt-for-python).
+**Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python(PySide6)](https://doc.qt.io/qtforpython/).
 
 ## Setup
 1. Install Python 3.7+ (64-bit), making sure to add it to your PATH.
