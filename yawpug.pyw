@@ -16,6 +16,7 @@ class MainWindow(QMainWindow):
         self.options=['']*6
         
         self.setWindowTitle("YAWPUG - Yet Another WebP Utilities Gui")
+        self.setFixedSize(360, 410)
         self.ui.statusbar.showMessage('Ready')
         
         #basic usage
@@ -61,7 +62,11 @@ class MainWindow(QMainWindow):
                 
         
     def convert_clicked(self):
-        # TODO: prevent click convert before setting input path and output path
+        # Block convert if input or output path is empty.
+        if not (self.ui.input_path.text() and self.ui.output_path.text()):
+            self.ui.statusbar.showMessage('Please select input file and output file paths before converting.')
+            return
+        
         self.ui.statusbar.showMessage('Converting...')
         self.ui.statusbar.repaint()
         
@@ -72,7 +77,7 @@ class MainWindow(QMainWindow):
         self.args.extend((gif_file, '-o', webp_file))
         
         subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
-        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.2f}%')
+        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
         
     def updateStatusBar(self): 
         self.ui.statusbar.showMessage('options: ' + ' '.join(self.options))
