@@ -19,8 +19,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QCommandLinkButton,
     QHBoxLayout, QLabel, QLineEdit, QMainWindow,
     QMenu, QMenuBar, QPushButton, QRadioButton,
-    QSizePolicy, QSlider, QSpacerItem, QStatusBar,
-    QVBoxLayout, QWidget)
+    QSizePolicy, QSlider, QSpacerItem, QSpinBox,
+    QStatusBar, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -40,6 +40,9 @@ class Ui_MainWindow(object):
         self.actionSave_config.setObjectName(u"actionSave_config")
         self.actionLoad_config = QAction(MainWindow)
         self.actionLoad_config.setObjectName(u"actionLoad_config")
+        self.actionAdvanced_options = QAction(MainWindow)
+        self.actionAdvanced_options.setObjectName(u"actionAdvanced_options")
+        self.actionAdvanced_options.setCheckable(True)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setEnabled(True)
@@ -87,30 +90,30 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.output_hbox)
 
-        self.encode_hbox = QHBoxLayout()
-        self.encode_hbox.setObjectName(u"encode_hbox")
+        self.compression_hbox_2 = QHBoxLayout()
+        self.compression_hbox_2.setObjectName(u"compression_hbox_2")
         self.lossless_button = QRadioButton(self.centralwidget)
         self.lossless_button.setObjectName(u"lossless_button")
         self.lossless_button.setChecked(True)
 
-        self.encode_hbox.addWidget(self.lossless_button)
+        self.compression_hbox_2.addWidget(self.lossless_button)
 
         self.lossy_button = QRadioButton(self.centralwidget)
         self.lossy_button.setObjectName(u"lossy_button")
 
-        self.encode_hbox.addWidget(self.lossy_button)
+        self.compression_hbox_2.addWidget(self.lossy_button)
 
         self.mixed_button = QRadioButton(self.centralwidget)
         self.mixed_button.setObjectName(u"mixed_button")
 
-        self.encode_hbox.addWidget(self.mixed_button)
+        self.compression_hbox_2.addWidget(self.mixed_button)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.encode_hbox.addItem(self.horizontalSpacer)
+        self.compression_hbox_2.addItem(self.horizontalSpacer)
 
 
-        self.verticalLayout.addLayout(self.encode_hbox)
+        self.verticalLayout.addLayout(self.compression_hbox_2)
 
         self.quality_hbox = QHBoxLayout()
         self.quality_hbox.setObjectName(u"quality_hbox")
@@ -135,6 +138,7 @@ class Ui_MainWindow(object):
 
         self.quality_value = QLabel(self.centralwidget)
         self.quality_value.setObjectName(u"quality_value")
+        self.quality_value.setEnabled(False)
 
         self.quality_hbox.addWidget(self.quality_value)
 
@@ -145,36 +149,38 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.quality_hbox)
 
-        self.compression_hbox = QHBoxLayout()
-        self.compression_hbox.setObjectName(u"compression_hbox")
-        self.compression_checkbox = QCheckBox(self.centralwidget)
-        self.compression_checkbox.setObjectName(u"compression_checkbox")
+        self.compression_method_hbox = QHBoxLayout()
+        self.compression_method_hbox.setObjectName(u"compression_method_hbox")
+        self.compression_method_checkbox = QCheckBox(self.centralwidget)
+        self.compression_method_checkbox.setObjectName(u"compression_method_checkbox")
 
-        self.compression_hbox.addWidget(self.compression_checkbox)
+        self.compression_method_hbox.addWidget(self.compression_method_checkbox)
 
-        self.compression_slider = QSlider(self.centralwidget)
-        self.compression_slider.setObjectName(u"compression_slider")
-        self.compression_slider.setEnabled(False)
-        sizePolicy1.setHeightForWidth(self.compression_slider.sizePolicy().hasHeightForWidth())
-        self.compression_slider.setSizePolicy(sizePolicy1)
-        self.compression_slider.setMaximum(6)
-        self.compression_slider.setValue(4)
-        self.compression_slider.setOrientation(Qt.Horizontal)
-        self.compression_slider.setInvertedControls(False)
+        self.compression_method_slider = QSlider(self.centralwidget)
+        self.compression_method_slider.setObjectName(u"compression_method_slider")
+        self.compression_method_slider.setEnabled(False)
+        sizePolicy1.setHeightForWidth(self.compression_method_slider.sizePolicy().hasHeightForWidth())
+        self.compression_method_slider.setSizePolicy(sizePolicy1)
+        self.compression_method_slider.setMaximum(6)
+        self.compression_method_slider.setPageStep(2)
+        self.compression_method_slider.setValue(4)
+        self.compression_method_slider.setOrientation(Qt.Horizontal)
+        self.compression_method_slider.setInvertedControls(False)
 
-        self.compression_hbox.addWidget(self.compression_slider)
+        self.compression_method_hbox.addWidget(self.compression_method_slider)
 
-        self.compression_value = QLabel(self.centralwidget)
-        self.compression_value.setObjectName(u"compression_value")
+        self.compression_method_value = QLabel(self.centralwidget)
+        self.compression_method_value.setObjectName(u"compression_method_value")
+        self.compression_method_value.setEnabled(False)
 
-        self.compression_hbox.addWidget(self.compression_value)
+        self.compression_method_hbox.addWidget(self.compression_method_value)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.compression_hbox.addItem(self.horizontalSpacer_3)
+        self.compression_method_hbox.addItem(self.horizontalSpacer_3)
 
 
-        self.verticalLayout.addLayout(self.compression_hbox)
+        self.verticalLayout.addLayout(self.compression_method_hbox)
 
         self.min_size_checkbox = QCheckBox(self.centralwidget)
         self.min_size_checkbox.setObjectName(u"min_size_checkbox")
@@ -182,10 +188,50 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.min_size_checkbox)
 
+        self.multi_threading = QCheckBox(self.centralwidget)
+        self.multi_threading.setObjectName(u"multi_threading")
+        self.multi_threading.setChecked(False)
+
+        self.verticalLayout.addWidget(self.multi_threading)
+
+        self.kmin_kmax = QHBoxLayout()
+        self.kmin_kmax.setObjectName(u"kmin_kmax")
+        self.kmin_kmax_checkbox = QCheckBox(self.centralwidget)
+        self.kmin_kmax_checkbox.setObjectName(u"kmin_kmax_checkbox")
+        self.kmin_kmax_checkbox.setEnabled(False)
+
+        self.kmin_kmax.addWidget(self.kmin_kmax_checkbox)
+
+        self.kmin_spinbox = QSpinBox(self.centralwidget)
+        self.kmin_spinbox.setObjectName(u"kmin_spinbox")
+        self.kmin_spinbox.setEnabled(False)
+
+        self.kmin_kmax.addWidget(self.kmin_spinbox)
+
+        self.kmax_label = QLabel(self.centralwidget)
+        self.kmax_label.setObjectName(u"kmax_label")
+        self.kmax_label.setEnabled(False)
+
+        self.kmin_kmax.addWidget(self.kmax_label)
+
+        self.kmax_spinbox = QSpinBox(self.centralwidget)
+        self.kmax_spinbox.setObjectName(u"kmax_spinbox")
+        self.kmax_spinbox.setEnabled(False)
+
+        self.kmin_kmax.addWidget(self.kmax_spinbox)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.kmin_kmax.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout.addLayout(self.kmin_kmax)
+
         self.metadata_hbox = QHBoxLayout()
         self.metadata_hbox.setObjectName(u"metadata_hbox")
         self.metadata_checkbox = QCheckBox(self.centralwidget)
         self.metadata_checkbox.setObjectName(u"metadata_checkbox")
+        self.metadata_checkbox.setEnabled(False)
 
         self.metadata_hbox.addWidget(self.metadata_checkbox)
 
@@ -208,27 +254,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.metadata_hbox)
 
-        self.multi_threading = QCheckBox(self.centralwidget)
-        self.multi_threading.setObjectName(u"multi_threading")
-        self.multi_threading.setChecked(False)
-
-        self.verticalLayout.addWidget(self.multi_threading)
-
-        self.advanced_label = QLabel(self.centralwidget)
-        self.advanced_label.setObjectName(u"advanced_label")
-
-        self.verticalLayout.addWidget(self.advanced_label)
-
-        self.temp_kmin = QLabel(self.centralwidget)
-        self.temp_kmin.setObjectName(u"temp_kmin")
-
-        self.verticalLayout.addWidget(self.temp_kmin)
-
         self.filter_hbox = QHBoxLayout()
         self.filter_hbox.setObjectName(u"filter_hbox")
         self.filter_checkbox = QCheckBox(self.centralwidget)
         self.filter_checkbox.setObjectName(u"filter_checkbox")
-        self.filter_checkbox.setEnabled(True)
+        self.filter_checkbox.setEnabled(False)
 
         self.filter_hbox.addWidget(self.filter_checkbox)
 
@@ -244,6 +274,7 @@ class Ui_MainWindow(object):
 
         self.filter_value = QLabel(self.centralwidget)
         self.filter_value.setObjectName(u"filter_value")
+        self.filter_value.setEnabled(False)
 
         self.filter_hbox.addWidget(self.filter_value)
 
@@ -256,7 +287,7 @@ class Ui_MainWindow(object):
 
         self.convert_button = QCommandLinkButton(self.centralwidget)
         self.convert_button.setObjectName(u"convert_button")
-        self.convert_button.setEnabled(False)
+        self.convert_button.setEnabled(True)
 
         self.verticalLayout.addWidget(self.convert_button)
 
@@ -275,20 +306,28 @@ class Ui_MainWindow(object):
 
         self.menubar.addAction(self.menuMenu.menuAction())
         self.menuMenu.addAction(self.actionBatch_mode)
-        self.menuMenu.addSeparator()
-        self.menuMenu.addAction(self.actionSave_config)
-        self.menuMenu.addAction(self.actionLoad_config)
+        self.menuMenu.addAction(self.actionAdvanced_options)
 
         self.retranslateUi(MainWindow)
         self.quality_slider.valueChanged.connect(self.quality_value.setNum)
-        self.compression_slider.valueChanged.connect(self.compression_value.setNum)
+        self.compression_method_slider.valueChanged.connect(self.compression_method_value.setNum)
         self.quality_checkbox.clicked["bool"].connect(self.quality_slider.setEnabled)
         self.filter_slider.valueChanged.connect(self.filter_value.setNum)
         self.filter_checkbox.clicked["bool"].connect(self.filter_slider.setEnabled)
-        self.compression_checkbox.clicked["bool"].connect(self.compression_slider.setEnabled)
+        self.compression_method_checkbox.clicked["bool"].connect(self.compression_method_slider.setEnabled)
         self.metadata_checkbox.clicked["bool"].connect(self.metadata_combobox.setEnabled)
+        self.actionAdvanced_options.toggled.connect(self.kmin_kmax_checkbox.setEnabled)
+        self.kmin_kmax_checkbox.clicked["bool"].connect(self.kmin_spinbox.setEnabled)
+        self.kmin_kmax_checkbox.clicked["bool"].connect(self.kmax_spinbox.setEnabled)
+        self.actionAdvanced_options.toggled.connect(self.filter_checkbox.setEnabled)
+        self.actionAdvanced_options.toggled.connect(self.kmax_label.setEnabled)
+        self.kmin_kmax_checkbox.clicked["bool"].connect(self.kmax_label.setEnabled)
+        self.quality_checkbox.clicked["bool"].connect(self.quality_value.setEnabled)
+        self.compression_method_checkbox.clicked["bool"].connect(self.compression_method_value.setEnabled)
+        self.filter_checkbox.clicked["bool"].connect(self.filter_value.setEnabled)
+        self.actionAdvanced_options.toggled.connect(self.metadata_checkbox.setEnabled)
 
-        self.metadata_combobox.setCurrentIndex(0)
+        self.metadata_combobox.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -299,20 +338,21 @@ class Ui_MainWindow(object):
         self.actionBatch_mode.setText(QCoreApplication.translate("MainWindow", u"Batch mode", None))
         self.actionSave_config.setText(QCoreApplication.translate("MainWindow", u"Save options", None))
         self.actionLoad_config.setText(QCoreApplication.translate("MainWindow", u"Load options", None))
+        self.actionAdvanced_options.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
         self.input_label.setText(QCoreApplication.translate("MainWindow", u"input file", None))
         self.input_select.setText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.output_label.setText(QCoreApplication.translate("MainWindow", u"output file", None))
         self.output_select.setText(QCoreApplication.translate("MainWindow", u"Select", None))
 #if QT_CONFIG(tooltip)
-        self.lossless_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossless compression.", None))
+        self.lossless_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossless compression", None))
 #endif // QT_CONFIG(tooltip)
         self.lossless_button.setText(QCoreApplication.translate("MainWindow", u"loseless", None))
 #if QT_CONFIG(tooltip)
-        self.lossy_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossy compression.", None))
+        self.lossy_button.setToolTip(QCoreApplication.translate("MainWindow", u"encode image using lossy compression", None))
 #endif // QT_CONFIG(tooltip)
         self.lossy_button.setText(QCoreApplication.translate("MainWindow", u"lossy", None))
 #if QT_CONFIG(tooltip)
-        self.mixed_button.setToolTip(QCoreApplication.translate("MainWindow", u"for each frame in the image, pick lossy or lossless compression heuristically.", None))
+        self.mixed_button.setToolTip(QCoreApplication.translate("MainWindow", u"for each frame in the image, pick lossy or lossless compression heuristically", None))
 #endif // QT_CONFIG(tooltip)
         self.mixed_button.setText(QCoreApplication.translate("MainWindow", u"mixed", None))
 #if QT_CONFIG(tooltip)
@@ -321,16 +361,28 @@ class Ui_MainWindow(object):
         self.quality_checkbox.setText(QCoreApplication.translate("MainWindow", u"quality", None))
         self.quality_value.setText(QCoreApplication.translate("MainWindow", u"75", None))
 #if QT_CONFIG(tooltip)
-        self.compression_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"compression method (0=fast, 6=slowest)", None))
+        self.compression_method_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"compression method (0=fast, 6=slowest)", None))
 #endif // QT_CONFIG(tooltip)
-        self.compression_checkbox.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
-        self.compression_value.setText(QCoreApplication.translate("MainWindow", u"4", None))
+        self.compression_method_checkbox.setText(QCoreApplication.translate("MainWindow", u"compression method", None))
+        self.compression_method_value.setText(QCoreApplication.translate("MainWindow", u"4", None))
 #if QT_CONFIG(tooltip)
-        self.min_size_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"minimize output size (default:off)", None))
+        self.min_size_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"minimize output size", None))
 #endif // QT_CONFIG(tooltip)
         self.min_size_checkbox.setText(QCoreApplication.translate("MainWindow", u"minimize size", None))
 #if QT_CONFIG(tooltip)
-        self.metadata_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"comma separated list of metadata to copy from the input to the output if present (default:xmp)", None))
+        self.multi_threading.setToolTip(QCoreApplication.translate("MainWindow", u"use multi-threading if available", None))
+#endif // QT_CONFIG(tooltip)
+        self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
+#if QT_CONFIG(tooltip)
+        self.kmin_kmax_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"min distance between key frames", None))
+#endif // QT_CONFIG(tooltip)
+        self.kmin_kmax_checkbox.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
+#if QT_CONFIG(tooltip)
+        self.kmax_label.setToolTip(QCoreApplication.translate("MainWindow", u"max distance between key frames", None))
+#endif // QT_CONFIG(tooltip)
+        self.kmax_label.setText(QCoreApplication.translate("MainWindow", u"kmax", None))
+#if QT_CONFIG(tooltip)
+        self.metadata_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"comma separated list of metadata to copy from the input to the output if present", None))
 #endif // QT_CONFIG(tooltip)
         self.metadata_checkbox.setText(QCoreApplication.translate("MainWindow", u"metadata", None))
         self.metadata_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"all", None))
@@ -338,16 +390,10 @@ class Ui_MainWindow(object):
         self.metadata_combobox.setItemText(2, QCoreApplication.translate("MainWindow", u"icc", None))
         self.metadata_combobox.setItemText(3, QCoreApplication.translate("MainWindow", u"xmp", None))
 
-        self.metadata_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"all", None))
+        self.metadata_combobox.setCurrentText(QCoreApplication.translate("MainWindow", u"xmp", None))
 #if QT_CONFIG(tooltip)
-        self.multi_threading.setToolTip(QCoreApplication.translate("MainWindow", u"use multi-threading if available", None))
+        self.filter_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"filter strength (0=off..100)", None))
 #endif // QT_CONFIG(tooltip)
-        self.multi_threading.setText(QCoreApplication.translate("MainWindow", u"multi-threading", None))
-        self.advanced_label.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
-#if QT_CONFIG(tooltip)
-        self.temp_kmin.setToolTip(QCoreApplication.translate("MainWindow", u"min distance between key frames", None))
-#endif // QT_CONFIG(tooltip)
-        self.temp_kmin.setText(QCoreApplication.translate("MainWindow", u"kmin", None))
         self.filter_checkbox.setText(QCoreApplication.translate("MainWindow", u"filter", None))
         self.filter_value.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.convert_button.setText(QCoreApplication.translate("MainWindow", u"Convert", None))
