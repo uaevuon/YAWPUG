@@ -8,7 +8,6 @@
 
 ## TODO
 * batch mode
-* save config
 
 ## License
 This software is licensed under the GNU General Public License v3.0.
