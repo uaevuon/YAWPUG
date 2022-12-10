@@ -1,5 +1,6 @@
 # YAWPUG
 **Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python(PySide6)](https://doc.qt.io/qtforpython/).
+This program is aim to provide you an easy method for GIF to WebP converting.
 
 ## Setup
 1. Install Python 3.7+ (64-bit), making sure to add it to your PATH.
@@ -8,6 +9,16 @@
 
 ## Usage
 ![demo](demo.webp)
+
+Run `yawpug.pyw`.
+Select input GIF file which you want to convert to WebP.
+Output WebP file has same file name with .webp extension automatically. If you want to change it, select other output file.
+Select options which you want to set. For advanced options (kmin, kmax, metadata, filter), enable `Advanced options` under Menu.
+
+| Input GIF file | Output WebP file |
+| :---: | :---: |
+| ![](1612930718742.gif)  |  ![](1612930718742.webp) |
+| 4.47MB | 888kB |
 
 ## TODO
 * batch mode
