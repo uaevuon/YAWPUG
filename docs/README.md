@@ -15,10 +15,10 @@ Select input GIF file which you want to convert to WebP.
 Output WebP file has same file name with .webp extension automatically. If you want to change it, select other output file.
 Select options which you want to set. For advanced options (kmin, kmax, metadata, filter), enable `Advanced options` under Menu.
 
-| Input GIF file | Output WebP file |
+| Input GIF file for demo | Output WebP file for demo |
 | :---: | :---: |
 | ![](1612930718742.gif)  |  ![](1612930718742.webp) |
-| 4.47MB | 888kB |
+| 4.47 MB | 809 kB (-80.6%)  |
 
 ## TODO
 * batch mode
