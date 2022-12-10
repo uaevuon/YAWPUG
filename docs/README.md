@@ -27,5 +27,6 @@ Automatically, output WebP file will have same file name with .webp extension. I
 * batch mode
 
 ## License
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 This software is licensed under the GNU General Public License v3.0.
 The source is publicly available on [GitHub](https://github.com/uaevuon/yawpug).
