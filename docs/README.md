@@ -12,7 +12,7 @@ This program is aim to provide you an easy method for GIF to WebP converting.
 
 1. Run `yawpug.pyw`.
 2. Select input GIF file which you want to convert to WebP.
-Output WebP file has same file name with .webp extension automatically. If you want to change it, select other output file.
+Automatically, output WebP file will have same file name with .webp extension. If you want to change it, select other output file manually.
 3. Select options which you want to set. You can see tooltips for each options if you hover the cursor on them. For advanced options (kmin, kmax, metadata, filter), enable `Advanced options` under Menu.
 4. Click Convert.
 
