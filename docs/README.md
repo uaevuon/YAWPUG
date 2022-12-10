@@ -3,6 +3,8 @@
 
 This program is aim to provide you an easy method for GIF to WebP converting.
 
+WebP is a modern image format that provides superior lossless and lossy compression for images on the web. [More inforemation about WebP](https://developers.google.com/speed/webp)
+
 ## Setup
 1. Install Python 3.7+ (64-bit), making sure to add it to your PATH.
 2. [Download ZIP](https://github.com/uaevuon/YAWPUG/archive/refs/heads/main.zip) of this repository.
@@ -28,5 +30,6 @@ Automatically, output WebP file will have same file name with .webp extension. I
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 This software is licensed under the GNU General Public License v3.0.
 The source is publicly available on [GitHub](https://github.com/uaevuon/yawpug).
