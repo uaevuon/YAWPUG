@@ -1,7 +1,7 @@
 # YAWPUG
 **Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python(PySide6)](https://doc.qt.io/qtforpython/).
 
-This program is aim to provide you an easy method for GIF to WebP converting.
+This program aims to provide you an easy method for GIF to WebP converting.
 
 WebP is a modern image format that provides superior lossless and lossy compression for images on the web. [More inforemation about WebP](https://developers.google.com/speed/webp)
 
