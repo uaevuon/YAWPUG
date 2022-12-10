@@ -1,5 +1,6 @@
 # YAWPUG
 **Y**et **A**nother **W**eb**P** **U**tilities **G**ui: GUI for WebP Utilities using [Qt for Python(PySide6)](https://doc.qt.io/qtforpython/).
+
 This program is aim to provide you an easy method for GIF to WebP converting.
 
 ## Setup
