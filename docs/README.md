@@ -6,6 +6,9 @@
 2. [Download ZIP](https://github.com/uaevuon/YAWPUG/archive/refs/heads/main.zip) of this repository.
 3. Run `pip install -r requirements.txt`.
 
+## Usage
+![demo](images/demo.webp)
+
 ## TODO
 * batch mode
 
