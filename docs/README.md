@@ -15,15 +15,15 @@ WebP is a modern image format that provides superior lossless and lossy compress
 
 1. Run `yawpug.pyw`.
 2. Select input GIF file which you want to convert to WebP.
-Automatically, output WebP file will have same file name with .webp extension. If you want to change it, select other output file manually.
-3. Select options which you want to set. You can see tooltips for each options if you hover the cursor on them. For advanced options (kmin, kmax, metadata, filter), enable `Advanced options` under Menu.
+Automatically, output WebP file will have same file name with .webp extension. If you want to change it, select output file manually.
+3. Select options which you want to set. You can see the tooltip for each options if you hover the cursor on them. For advanced options (kmin, kmax, metadata, filter), enable `Advanced options` under Menu.
 4. Click Convert.
 
 ### Comparison
 | Input GIF file for demo | Output WebP file for demo |
 | :---: | :---: |
-| ![](1612930718742.gif)  |  ![](1612930718742.webp) |
-| 4.47 MB | 889 kB (-80.6%)  |
+| ![GIF](1612930718742.gif)  |  ![WebP](1612930718742.webp) |
+| 4.47 MB | 889 KB (-80.6%)  |
 
 ## TODO
 * batch mode
