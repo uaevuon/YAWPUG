@@ -7,7 +7,7 @@
 3. Run `pip install -r requirements.txt`.
 
 ## Usage
-![demo](images/demo.webp)
+![demo](demo.webp)
 
 ## TODO
 * batch mode
