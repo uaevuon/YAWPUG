@@ -3,7 +3,7 @@
 
 This program aims to provide you an easy method for GIF to WebP converting.
 
-WebP is a modern image format that provides superior lossless and lossy compression for images on the web. [More inforemation about WebP](https://developers.google.com/speed/webp)
+WebP is a modern image format that provides superior lossless and lossy compression for images on the web. [More information about WebP](https://developers.google.com/speed/webp)
 
 ## Setup
 1. Install Python 3.7+ (64-bit), making sure to add it to your PATH.
