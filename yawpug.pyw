@@ -112,6 +112,7 @@ class MainWindow(QMainWindow):
         
         subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
         self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
+        # TODO: remove input file after converting option
         
     def updateStatusBar(self):
         self.ui.statusbar.showMessage('options: ' + ' '.join(i for i in self.options if i)) # Skip empty values

@@ -492,6 +492,7 @@
     </property>
     <addaction name="actionBatch_mode"/>
     <addaction name="actionAdvanced_options"/>
+    <addaction name="actionDelete_input_file_after_convert"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -524,6 +525,14 @@
    </property>
    <property name="text">
     <string>Advanced options</string>
+   </property>
+  </action>
+  <action name="actionDelete_input_file_after_convert">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Delete input file after convert</string>
    </property>
   </action>
  </widget>
