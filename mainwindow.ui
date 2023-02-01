@@ -491,7 +491,7 @@
      <string>Menu</string>
     </property>
     <addaction name="actionAdvanced_options"/>
-    <addaction name="actionDelete_input_file_after_convert"/>
+    <addaction name="actionDelete_input_after_convert"/>
    </widget>
    <addaction name="menuMenu"/>
   </widget>
@@ -518,12 +518,12 @@
     <string>Advanced options</string>
    </property>
   </action>
-  <action name="actionDelete_input_file_after_convert">
+  <action name="actionDelete_input_after_convert">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Delete input file after convert</string>
+    <string>Delete input after convert</string>
    </property>
   </action>
  </widget>

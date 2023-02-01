@@ -50,11 +50,11 @@ class MainWindow(QMainWindow):
           
     # basic usage
     def input_selector(self):
-        fnames = QFileDialog.getOpenFileNames(self,'','','GIF Images (*.gif)')
+        fnames = QFileDialog.getOpenFileNames(self,'','','GIF Image (*.gif)')
         if len(fnames[0]) == 1:
             self.ui.input_path.setText(fnames[0][0])
-            self.ui.output_path.setText('.webp'.join(fnames[0].rsplit('.gif', 1))) # Simulate rreplace('.gif', '.webp', 1)
-        else:
+            self.ui.output_path.setText('.webp'.join(fnames[0][0].rsplit('.gif', 1))) # Simulate rreplace('.gif', '.webp', 1)
+        elif len(fnames[0]) > 1:
             pass
         
     def output_selector(self):
@@ -63,7 +63,7 @@ class MainWindow(QMainWindow):
         
     def convert_clicked(self):
         if not (self.ui.input_path.text() and self.ui.output_path.text()):
-            self.ui.statusbar.showMessage('Please select input file output files before converting.')
+            self.ui.statusbar.showMessage('Input or Output is missing.')
             return
         
         self.ui.statusbar.showMessage('Converting...')
@@ -78,6 +78,8 @@ class MainWindow(QMainWindow):
         subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
         self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
         # TODO: remove input file after converting option
+        if self.ui.actionDelete_input_after_convert.isChecked():
+            pass
 
     # options     
     def set_compression(self):
