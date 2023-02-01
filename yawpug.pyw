@@ -47,17 +47,39 @@ class MainWindow(QMainWindow):
         self.ui.filter_checkbox.clicked.connect(self.set_filter)
         self.ui.filter_slider.valueChanged.connect(self.set_filter)
 
-        
+          
+    # basic usage
     def input_selector(self):
-        fname = QFileDialog.getOpenFileName(self,'','','GIF Image(*.gif)')
-        self.ui.input_path.setText(fname[0])
-        self.ui.output_path.setText('.webp'.join(fname[0].rsplit('.gif', 1))) # Simulate rreplace('.gif', '.webp', 1)
-    
+        fnames = QFileDialog.getOpenFileNames(self,'','','GIF Images (*.gif)')
+        if len(fnames[0]) == 1:
+            self.ui.input_path.setText(fnames[0][0])
+            self.ui.output_path.setText('.webp'.join(fnames[0].rsplit('.gif', 1))) # Simulate rreplace('.gif', '.webp', 1)
+        else:
+            pass
+        
     def output_selector(self):
-        fname = QFileDialog.getSaveFileName(self,'','','WebP Image(*.webp)')
+        fname = QFileDialog.getSaveFileName(self,'','','WebP Image (*.webp)')
         self.ui.output_path.setText(fname[0])
         
+    def convert_clicked(self):
+        if not (self.ui.input_path.text() and self.ui.output_path.text()):
+            self.ui.statusbar.showMessage('Please select input file output files before converting.')
+            return
         
+        self.ui.statusbar.showMessage('Converting...')
+        self.ui.statusbar.repaint()
+        
+        self.args=[self.BIN_PATH]
+        self.args.extend(self.options)
+        gif_file = self.ui.input_path.text()
+        webp_file = self.ui.output_path.text()
+        self.args.extend((gif_file, '-o', webp_file))
+        
+        subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
+        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
+        # TODO: remove input file after converting option
+
+    # options     
     def set_compression(self):
         if self.ui.lossless_button.isChecked():
             self.options[0] = ''
@@ -95,28 +117,9 @@ class MainWindow(QMainWindow):
         self.options[13:15] = ['-f', str(self.ui.filter_slider.value())] if self.ui.actionAdvanced_options.isChecked() and self.ui.filter_checkbox.isChecked() else ['','']
         self.updateStatusBar()
 
-        
-    def convert_clicked(self):
-        if not (self.ui.input_path.text() and self.ui.output_path.text()):
-            self.ui.statusbar.showMessage('Please select input file output files before converting.')
-            return
-        
-        self.ui.statusbar.showMessage('Converting...')
-        self.ui.statusbar.repaint()
-        
-        self.args=[self.BIN_PATH]
-        self.args.extend(self.options)
-        gif_file = self.ui.input_path.text()
-        webp_file = self.ui.output_path.text()
-        self.args.extend((gif_file, '-o', webp_file))
-        
-        subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
-        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
-        # TODO: remove input file after converting option
-        
+    # status bar
     def updateStatusBar(self):
         self.ui.statusbar.showMessage('options: ' + ' '.join(i for i in self.options if i)) # Skip empty values
-
 
 
 if __name__ == "__main__":
