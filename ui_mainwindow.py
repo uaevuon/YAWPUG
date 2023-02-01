@@ -33,9 +33,6 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        self.actionBatch_mode = QAction(MainWindow)
-        self.actionBatch_mode.setObjectName(u"actionBatch_mode")
-        self.actionBatch_mode.setCheckable(True)
         self.actionSave_config = QAction(MainWindow)
         self.actionSave_config.setObjectName(u"actionSave_config")
         self.actionLoad_config = QAction(MainWindow)
@@ -308,7 +305,6 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuMenu.menuAction())
-        self.menuMenu.addAction(self.actionBatch_mode)
         self.menuMenu.addAction(self.actionAdvanced_options)
         self.menuMenu.addAction(self.actionDelete_input_file_after_convert)
 
@@ -339,7 +335,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.actionBatch_mode.setText(QCoreApplication.translate("MainWindow", u"Batch mode", None))
         self.actionSave_config.setText(QCoreApplication.translate("MainWindow", u"Save options", None))
         self.actionLoad_config.setText(QCoreApplication.translate("MainWindow", u"Load options", None))
         self.actionAdvanced_options.setText(QCoreApplication.translate("MainWindow", u"Advanced options", None))
