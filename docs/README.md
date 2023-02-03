@@ -26,7 +26,8 @@ Automatically, output WebP file will have same file name with .webp extension. I
 | 4.47 MB | 889 KB (-80.6%)  |
 
 ## TODO
-
+* Delete input after converting
+* Add description for options(kmin, kmax, f...)
 
 ## License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
