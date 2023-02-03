@@ -12,8 +12,10 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
-        self.BIN_PATH='.\\bin\\gif2webp'
-        self.options=['']*14
+        self.BIN_PATH = '.\\bin\\gif2webp'
+        self.options = ['']*14
+        self.input_list = []
+        self.output_list = []
         
         self.setWindowTitle("YAWPUG - Yet Another WebP Utilities Gui")
         self.setFixedSize(390, 410)
@@ -51,17 +53,25 @@ class MainWindow(QMainWindow):
     # basic usage
     def input_selector(self):
         fnames = QFileDialog.getOpenFileNames(self,'','','GIF Image (*.gif)')
-        if len(fnames[0]) == 1:
-            self.ui.input_path.setText(fnames[0][0])
-            self.ui.output_path.setText('.webp'.join(fnames[0][0].rsplit('.gif', 1))) # Simulate rreplace('.gif', '.webp', 1)
-        elif len(fnames[0]) > 1:
-            pass
+        self.input_list = fnames[0]
+        self.output_list = ['.webp'.join(i.rsplit('.gif', 1)) for i in self.input_list] # Simulate rreplace('.gif', '.webp', 1)
+        self.ui.input_path.setText(', '.join(self.input_list))
+        self.ui.output_path.setText(', '.join(self.output_list))
         
+        if len(self.input_list) > 1:
+            self.ui.output_select.setEnabled(False)
+            self.ui.output_select.repaint()
+        else:
+            self.ui.output_select.setEnabled(True)
+            self.ui.output_select.repaint()
+
     def output_selector(self):
         fname = QFileDialog.getSaveFileName(self,'','','WebP Image (*.webp)')
+        self.output_list = [fname[0]]
         self.ui.output_path.setText(fname[0])
         
     def convert_clicked(self):
+        #if not (self.input_list and self.output_list):
         if not (self.ui.input_path.text() and self.ui.output_path.text()):
             self.ui.statusbar.showMessage('Input or Output is missing.')
             return
@@ -69,14 +79,14 @@ class MainWindow(QMainWindow):
         self.ui.statusbar.showMessage('Converting...')
         self.ui.statusbar.repaint()
         
-        self.args=[self.BIN_PATH]
-        self.args.extend(self.options)
-        gif_file = self.ui.input_path.text()
-        webp_file = self.ui.output_path.text()
-        self.args.extend((gif_file, '-o', webp_file))
+        args=[self.BIN_PATH]
+        args.extend(self.options)
+        for index, (input_file, output_file) in enumerate(zip(self.input_list, self.output_list)):
+            args.extend((input_file, '-o', output_file))
+            subprocess.run(args, capture_output=True, creationflags = CREATE_NO_WINDOW)
+            self.ui.statusbar.showMessage(f'({index+1}/{len(self.input_list)}) Done. Size comparison: {100*((QFileInfo(output_file).size()/QFileInfo(input_file).size())-1):.1f}%')
+            self.ui.statusbar.repaint()
         
-        subprocess.run(self.args, capture_output=True, creationflags = CREATE_NO_WINDOW)
-        self.ui.statusbar.showMessage(f'Done. Size comparison: {100*((QFileInfo(webp_file).size()/QFileInfo(gif_file).size())-1):.1f}%')
         # TODO: remove input file after converting option
         if self.ui.actionDelete_input_after_convert.isChecked():
             pass
