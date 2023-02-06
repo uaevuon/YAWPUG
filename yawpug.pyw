@@ -2,7 +2,7 @@ import sys
 import subprocess
 from subprocess import CREATE_NO_WINDOW
 from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow
-from PySide6.QtCore import QFileInfo
+from PySide6.QtCore import QFileInfo, QFile
 from ui_mainwindow import Ui_MainWindow
 
 
@@ -84,13 +84,13 @@ class MainWindow(QMainWindow):
         for index, (input_file, output_file) in enumerate(zip(self.input_list, self.output_list)):
             args.extend((input_file, '-o', output_file))
             subprocess.run(args, capture_output=True, creationflags = CREATE_NO_WINDOW)
+            
             self.ui.statusbar.showMessage(f'({index+1}/{len(self.input_list)}) Done. Size comparison: {100*((QFileInfo(output_file).size()/QFileInfo(input_file).size())-1):.1f}%')
             self.ui.statusbar.repaint()
-        
-        # TODO: remove input file after converting option
-        if self.ui.actionDelete_input_after_convert.isChecked():
-            pass
-
+            
+            if self.ui.actionDelete_input_after_convert.isChecked():
+                QFile.moveToTrash(input_file)
+              
     # options     
     def set_compression(self):
         if self.ui.lossless_button.isChecked():

@@ -26,7 +26,6 @@ Automatically, output WebP file will have same file name with .webp extension. I
 | 4.47 MB | 889 KB (-80.6%)  |
 
 ## TODO
-* Delete input after converting
 * Add description for options(kmin, kmax, f...)
 
 ## License
